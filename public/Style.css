@@ -64,6 +64,10 @@ section{
     font-size: x-large;
     font-weight: 700;
 }
+#home-contact{
+    display: contents;
+    padding-inline: 1;
+}
 #span1{
     color: sandybrown;
     font-family:Georgia, 'Times New Roman', Times, serif;
