@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('item-price')->nullable(false);
             $table->unsignedBigInteger('item-id');
             $table->foreign('item-id')->references('id')->on('items');
-            $table->foreignId('order_id')->constrained();
+            $table->foreignId('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }

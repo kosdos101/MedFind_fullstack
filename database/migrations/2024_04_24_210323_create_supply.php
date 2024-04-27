@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedInteger('supply-price')->nullable(false);
             $table->string('supply-name',length:50)->nullable(false);
             $table->string('governorate');
-            $table->foreign('governorate')->references('governorate')->on('shipping-dep')->onDelete('cascade');
+            $table->foreign('governorate')->references('governorate')->on('shipping-dep');
             $table->string('supplier-id');
-            $table->foreign('supplier-id')->references('supplier-id')->on('supplier')->onDelete('cascade');
+            $table->foreign('supplier-id')->references('supplier-id')->on('supplier');
             $table->timestamps();
         });
     }
