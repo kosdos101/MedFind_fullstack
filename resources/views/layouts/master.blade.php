@@ -16,7 +16,7 @@
         <span id="website">MedFind</span>
         <nav id="nav">
                 <a href="/">Home</a>
-                <a href="Request">Request</a>
+                <a href="request">Request</a>
                 <a href="#">Info</a>
         </nav>
     </header>

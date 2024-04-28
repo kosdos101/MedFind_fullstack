@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ProfileController;
 
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/',[HomeController::class , 'index']);
-Route::get('/Request',[RequestController::class,'request']);
+Route::get('/',[ProfileController::class , 'index']);
+Route::get('/request',[ProfileController::class,'request']);

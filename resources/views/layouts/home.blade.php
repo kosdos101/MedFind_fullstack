@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('layouts.master')
 @section('body')
     <section id="home">
         <div id="home-contect">
