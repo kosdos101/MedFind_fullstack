@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('pages.master')
 @section('request')
 <main>
         <div class="gallery">

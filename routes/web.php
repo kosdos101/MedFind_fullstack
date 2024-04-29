@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/',[ProfileController::class , 'index']);
-Route::get('/request',[ProfileController::class,'request']);
+Route::get('/',[PagesController::class , 'index']);
+Route::get('/request',[PagesController::class,'request']);

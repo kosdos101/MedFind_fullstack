@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="Request.css">
 
 </head>
-<body>
-    <header id="header">
+<header id="header">
         <i id="icon" class='bx bxs-capsule bx-rotate-180' style='color:#e2e2e2' ></i>
         <span id="website">MedFind</span>
         <nav id="nav">
@@ -19,15 +18,18 @@
                 <a href="request">Request</a>
                 <a href="#">Info</a>
         </nav>
-    </header>
-@yield('body')
-@yield('request')
-    <footer id="footer">
+</header>
+
+<body>
+    @yield('body')
+    @yield('request')  
+</body>
+
+<footer id="footer">
         <p id="copyright">you may not reproduce or communicate any of the content on this website, including files downloadable from this website, without the permission of the copyright owner.</p>
         <a class="social" href="https://www.facebook.com/A1i.911"><i class='bx bxl-facebook'></i></a>
         <a class="social" href="https://www.instagram.com/ali.gazzaz/"><i class='bx bxl-instagram' ></i></a>
-    </footer>
-</body>
+</footer>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 </html>
