@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedFind</title>
+    <title>{{config('app.name','MedFind')}}</title>
     <link rel="shortcut icon" href="Source/capsule-solid-24.png" type="image/x-icon">
     <link rel="stylesheet" href="Style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -15,14 +15,15 @@
         <span id="website">MedFind</span>
         <nav id="nav">
                 <a href="/">Home</a>
-                <a href="request">Request</a>
-                <a href="#">Info</a>
+                <a href="/request">Request</a>
+                <a href="/add">Add</a>
         </nav>
 </header>
 
 <body>
     @yield('body')
     @yield('request')  
+    @yield('add')
 </body>
 
 <footer id="footer">

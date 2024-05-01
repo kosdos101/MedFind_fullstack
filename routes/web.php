@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
 //    return view('welcome');
-//});
-Route::get('/',[PagesController::class , 'index']);
+//})
+Route::view('/', 'pages.home');
 Route::get('/request',[PagesController::class,'request']);
+Route::get('/add',[PagesController::class,'add']);
