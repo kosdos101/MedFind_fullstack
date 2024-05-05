@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('item-name',length:25);
-            $table->date('expire-date');
-            $table->unsignedInteger('price');
+            $table->string('item-name',length:30)->nullable();
+            $table->date('expire-date')->nullable();
+            $table->unsignedInteger('price')->nullable();
             $table->boolean('prescription-requirment');
             $table->unsignedInteger('on-stock-quantity')->nullable();
-            $table->string('photo',300);
-            $table->string('category-id');
-            $table->foreign('category-id')->references('category-id')->on('categorys')->onDelete('cascade');
+            $table->string('details')->nullable();
+            $table->string('photo')->nullable();
+            $table->foreignId('category-id')->references('category-id')->on('categorys')->onDelete('cascade');
             $table->timestamps();
         });
     }

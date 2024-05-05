@@ -1,29 +1,25 @@
 @extends('layouts.master')
-@section('request')
+<link rel="stylesheet" href="css/Request.css">
+@section('body')
 <main>
+    @foreach ($items as $item )
         <div class="gallery">
             <div class="content">
-                <img src="Source/Antique-Codeia-Bell-Opium-Tablet-Bottle.jpg" alt="">
-                <h3>Setamol</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, sit.</p>
-                <h6>$5.00</h6>
-                <button>Order Now</button>
-            </div>
-            <div class="content">
-                <img src="Source/attachment_86100869.jfif" alt="">
-                <h3>Setamol</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, sit.</p>
-                <h6>$6.00</h6>
-                <button>Order Now</button>
-            </div>
-            <div class="content">
-                <img src="Source/depositphotos_9376490-stock-photo-yellow-pill-bottle.jpg" alt="">
-                <h3>Setamol</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, sit.</p>
-                <h6>$12.00</h6>
-                <button>Order Now</button>
+                <img src="/images/{{$item->photo}}">
+                <h3>{{$item->item-name}}</h3>
+                <p>{{$item->details}}</p>
+                <h6>{{$item->price}}</h6>
+                <h4>{{$item->prescription-requirment}}</h4>
+                <form action="{{route('items.destroy'),$item->id}}">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
+                </form>
+                <a href="{{route('items.edit'),$item->id}}">Edit</a>
+                <a href="{{route('items.show'),$item->id}}">Show</a>
             </div>
         </div>
-
+    @endforeach
+    {!! $items->links() !!}
 </main>
 @endsection

@@ -4,26 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{config('app.name','MedFind')}}</title>
+    <link rel="stylesheet" href="/css/Style.css">
     <link rel="shortcut icon" href="Source/capsule-solid-24.png" type="image/x-icon">
-    <link rel="stylesheet" href="Style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="Request.css">
-
 </head>
 <header id="header">
         <i id="icon" class='bx bxs-capsule bx-rotate-180' style='color:#e2e2e2' ></i>
         <span id="website">MedFind</span>
         <nav id="nav">
                 <a href="/">Home</a>
-                <a href="/request">Request</a>
-                <a href="/add">Add</a>
+                <a href="{{route('items.index')}}">Request</a>
+                <a href="{{route('items.create')}}">Add</a>
         </nav>
 </header>
 
 <body>
     @yield('body')
-    @yield('request')  
-    @yield('add')
 </body>
 
 <footer id="footer">
@@ -32,5 +28,5 @@
         <a class="social" href="https://www.instagram.com/ali.gazzaz/"><i class='bx bxl-instagram' ></i></a>
 </footer>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
+    
 </html>

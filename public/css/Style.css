@@ -78,7 +78,7 @@ section{
     color: var(--font-color);
     font-size: large;
     justify-content: space-around;
-    background-image: url(Source/rm373batch15-bg-11-kqaiv1bm.jpg);
+    background-image: url(Source\rm373batch15-bg-11-kqaiv1bm.jpg);
     padding: 3rem;
     background-repeat: no-repeat;
     background-attachment: fixed;

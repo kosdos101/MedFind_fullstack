@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,5 +8,6 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //})
 Route::view('/', 'pages.home');
-Route::get('/request',[PagesController::class,'request']);
-Route::get('/add',[PagesController::class,'add']);
+
+//Items
+Route::resource('items',ItemsController::class);
