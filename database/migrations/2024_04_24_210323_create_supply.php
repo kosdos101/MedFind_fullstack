@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('supply', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('supply-price')->nullable(false);
-            $table->string('supply-name',length:50)->nullable(false);
+            $table->unsignedInteger('supply_price')->nullable(false);
+            $table->string('supply_name',length:50)->nullable(false);
             $table->string('governorate');
             $table->foreign('governorate')->references('governorate')->on('shipping-dep');
-            $table->string('supplier-id');
-            $table->foreign('supplier-id')->references('supplier-id')->on('supplier');
+            $table->string('supplier_id');
+            $table->foreign('supplier_id')->references('supplier_id')->on('supplier');
             $table->timestamps();
         });
     }

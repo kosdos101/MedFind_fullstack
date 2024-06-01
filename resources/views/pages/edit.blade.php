@@ -2,23 +2,24 @@
 <link rel="stylesheet" href="/css/add.css">
 @section('body')
 
-    <form action="{{route('items.store')}}" method="post" class="add-form" enctype="multipart/form-data">
+<form action="{{ route('items.update' , ['id' => $id] ) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div class="div">
         <label for="item_name">Item Name:</label>
-        <input type="text" name="item_name" id="item_name" value="{{old ('item_name')}}">
+        <input type="text" name="item_name" id="item_name" >
       </div class="div">
       <div class="div">
         <label for="details">Item Description:</label>
-        <input type="text" name="details" id="details" value="{{old ('details')}}">
+        <input type="text" name="details" id="details">
       </div class="div">
       <div class="div">
         <label for="expire_date">Expire Date:</label>
-        <input type="date" name="expire_date" id="expire_date" value="{{old ('expire_date')}}">
+        <input type="date" name="expire_date" id="expire_date">
       </div class="div">
       <div class="div">
         <label for="price">Price:</label>
-        <input type="number" name="price" id="price" value="{{old ('price')}}">
+        <input type="number" name="price" id="price">
       </div class="div">
       <div class="div">
         <label for="prescription_requirment">Prescription Required:</label>
@@ -39,7 +40,7 @@
       </div>
         <button type="submit">Submit</button>
       </div class="div">
-    </form>
+</form>
 
     @if ($messge = Session::get('success'))
         <div style="padding: 20%;backgroud-color:green;">
@@ -57,5 +58,4 @@
         </ul>
       </div>
     @endif
-
   @endsection

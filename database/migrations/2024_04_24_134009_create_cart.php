@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('item-amount')->nullable(false);
-            $table->unsignedInteger('item-price')->nullable(false);
-            $table->unsignedBigInteger('item-id');
-            $table->foreign('item-id')->references('id')->on('items');
+            $table->unsignedInteger('item_amount')->nullable(false);
+            $table->unsignedInteger('item_price')->nullable(false);
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('items');
             $table->foreignId('order_id')->references('id')->on('orders');
             $table->timestamps();
         });

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('birth')->nullable(false);
             $table->char('phone',length:10)->nullable(false);
-            $table->string('first-name',length:20)->nullable(false);
-            $table->string('last-name',length:20)->nullable(false);
+            $table->string('first_name',length:20)->nullable(false);
+            $table->string('last_name',length:20)->nullable(false);
             $table->unsignedInteger('balance')->nullable(false);
             $table->string('location',length:100)->nullable(false);
             $table->timestamps();

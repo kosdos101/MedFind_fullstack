@@ -9,6 +9,6 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'item-name','expire-date','price','prescription-requirment','photo'
+        'item_name','expire_date','price','prescription_requirment','photo','details','category_id'
     ];
 }

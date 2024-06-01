@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Categorys;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ItemsController extends Controller
 {
@@ -31,29 +32,28 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+         //dd($request->all());
         $request->validate([
-            'item-name'=>'required',
-            'expire-date'=>'required',
+            'item_name'=>'required',
+            'expire_date'=>'required',
             'price'=>'required',
-            'prescription-requirment'=>'required',
             'photo'=>'required|image|mimes:jpg,jpeg,png|max:20000',
             'details'=>'required'
         ]);
         $input = $request->all();
         if($image = $request->file('photo')){
             $storedimage = date('YmdHis').".".$image->getClientOriginalExtension();
-            $image->move('public/images',$storedimage);
+            $image->storeAs('public/images/items',$storedimage);
             $input['photo']=$storedimage;
         }
         Item::create($input);
-        return redirect()->route('pages.request')->with('success','Item Added Successfully');
+        return redirect()->route('items.index')->with('success','Item Added Successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Item $id)
     {
         return view('pages.show',compact('id'));
     }
@@ -61,9 +61,10 @@ class ItemsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Item $id)
     {
-        return view('pages.edit',compact('id'));
+        $categories = Categorys::all();
+        return view('pages.edit',compact('id','categories'));
     }
 
     /**
@@ -72,22 +73,23 @@ class ItemsController extends Controller
     public function update(Request $request, Item $id)
     {
         $request->validate([
-            'item-name'=>'required',
-            'expire-date'=>'required',
+            'item_name'=>'required',
+            'expire_date'=>'required',
             'price'=>'required',
-            'prescription-requirment'=>'required',
+            'photo'=>'image|mimes:jpg,jpeg,png|max:20000',
+            'details'=>'required'
         ]);
         $input = $request->all();
         if($image = $request->file('photo')){
             $storedimage = date('YmdHis').".".$image->getClientOriginalExtension();
-            $image->move('public\images',$storedimage);
+            $image->storeAs('public/images/items',$storedimage);
             $input['photo']=$storedimage;
         }
         else {
             unset ( $input['photo'] );
         }
         $id->update($input);
-        return redirect()->route('pages.request')->with('success','Item Updated Successfully');
+        return redirect()->route('items.index')->with('success','Item Updated Successfully');
     }
 
     /**
@@ -96,6 +98,9 @@ class ItemsController extends Controller
     public function destroy(Item $id)
     {
         $id->delete();
-        return redirect()->route('pages.request')->with('success','Item Deleted Successfully');
+        if ($id->photo)
+            Storage::disk('public')->delete('public/images/items' . $id->photo);
+
+         return redirect()->route('items.index')->with('success', 'Item deleted');
     }
 }

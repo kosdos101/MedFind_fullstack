@@ -2,21 +2,30 @@
 <link rel="stylesheet" href="css/Request.css">
 @section('body')
 <main>
+    @if ($items == null)
+        <h1>Empty</h1>
+    @endif
     @foreach ($items as $item )
-        <div class="gallery">
+        <div class="gallery" style="display: block">
             <div class="content">
-                <img src="/images/{{$item->photo}}">
-                <h3>{{$item->item-name}}</h3>
+                <img src="{{asset('/storage/images/items/'.$item->photo)}}">
+                <h3>{{$item->item_name}}</h3>
                 <p>{{$item->details}}</p>
-                <h6>{{$item->price}}</h6>
-                <h4>{{$item->prescription-requirment}}</h4>
-                <form action="{{route('items.destroy'),$item->id}}">
+                <h6>{{$item->price}}$</h6>
+                <h6>@if ($item->prescription_requirment == 1)
+                    Prescription Needed
+                    @else
+                    @endif
+                </h6>
+                <div class="button">
+                <form action="{{route('items.destroy', ['item' => $item->id])}}" method="POST">
                 @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
+                @method('delete')
+                <button class="button" type="submit">Delete</button>
                 </form>
-                <a href="{{route('items.edit'),$item->id}}">Edit</a>
-                <a href="{{route('items.show'),$item->id}}">Show</a>
+                <a class="button" href="{{route('items.edit',['item' => $item->id])}}">Edit</a>
+                <a class="button" href="{{route('items.show',['item' => $item->id])}}">Show</a>
+                </div>
             </div>
         </div>
     @endforeach
